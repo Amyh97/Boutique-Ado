@@ -17,11 +17,13 @@ def all_products(request):
 
     if request.GET:
         if 'sort' in request.GET:
-            sortkey = request.GET['sort']
+            sortkey = request.GET['sort']  # used to get name or category depending on how user searches
             sort = sortkey
             if sortkey == 'name':
                 sortkey = 'lower_name'  # renams as not to lose original key
                 products = products.annotate(lower_name=Lower('name'))  # make case insensitive
+            if sortkey == 'category':
+                sortkey = 'category__name'
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
