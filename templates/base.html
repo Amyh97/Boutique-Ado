@@ -92,7 +92,7 @@
                             <div class="text-center">
                                 <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                                 <p class="my-0">
-                                    <!-- checking if class exists, if so show to 2 points if not show 0 -->
+                                    <!-- checking if class (from context processor) exists, if so show to 2 points if not show 0 -->
                                     {% if grand_total %}
                                         ${{ grand_total|floatformat:2 }}
                                     {% else %}
