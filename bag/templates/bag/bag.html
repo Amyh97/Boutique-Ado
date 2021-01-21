@@ -49,7 +49,7 @@
                             <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
                         </td>
                         <td class="p-3">
-                            <p class="my-0 small text-muted">${{ item.product.price | calc_subtotal:item.quantity}}</p>
+                            <p class="my-0 small text-muted">${{ item.product.price }}</p>
                         </td>
                         <td class="p-3 w-25">
                             <!-- submitted using JS at bottom -->
@@ -82,11 +82,11 @@
                                     </div>
                                 </div>
                             </form>
-                            <a class="update-link text-info" id="update_{{item.id}}"><small>Update</small></a>
-                            <a class="remove-item text-danger float-right" id="remove_{{item.id}}" data-product_size="{{ item.size }}"><small>Remove</small></a>
+                            <a class="update-link text-info" id="update_{{item.item_id}}"><small>Update</small></a>
+                            <a class="remove-item text-danger float-right" id="remove_{{item.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a>
                         </td>
                         <td class="p-3">
-                            <p class="my-0 small text-muted">${{ item.product.price }}</p>
+                            <p class="my-0 small text-muted">${{ item.product.price | calc_subtotal:item.quantity }}</p>
                         </td>
                     </tr>
                     {% endfor %}
@@ -150,18 +150,17 @@
 
     // remove item from bag
     $('.remove-item').click(function(e) {
-        // template varible renders hidden input field 
-        var csrfToken = '{{ csrf_token }}'
+        var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        var size =$(this).data('product_size');
-        var url = `/bag/remove/${item.id}/`;
-        // middleware server matches what Django expects to see in request.post
-        var data = {'csrdmiddlewaretoken': csrfToken, 'product_size': size};
+        var size = $(this).data('product_size');
+        var url = `/bag/remove/${itemId}/`;
+        // middleware requited by Django
+        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
 
         $.post(url, data)
-        .done(function() {
-            location.reload();
-        })
+         .done(function() {
+             location.reload();
+         });
     })
 
 </script>
