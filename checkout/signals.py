@@ -4,15 +4,16 @@ from django.dispatch import receiver
 
 from .models import OrderLineItem
 
-
 @receiver(post_save, sender=OrderLineItem)
 def update_on_save(sender, instance, created, **kwargs):
-    """ kwargs means keyword arguments
-    update order total on lineitem update/create  """
+    """
+    Update order total on lineitem update/create
+    """
     instance.order.update_total()
-
 
 @receiver(post_delete, sender=OrderLineItem)
 def update_on_delete(sender, instance, **kwargs):
-    """ update order total on lineitem delete """
+    """
+    Update order total on lineitem delete
+    """
     instance.order.update_total()
