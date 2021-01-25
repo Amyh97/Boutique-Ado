@@ -111,9 +111,10 @@
                     <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
                     <!-- Stripe card element goes here -->
                     <div id="card-element" class="mb-3"></div>
-
                     <!-- used to display form errors-->
                     <div id="card-errors" class="mb-3 text-danger" role="alert"></div>
+                    <!-- Pass the client secret to the view so we can get the payment intent id-->
+                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
                 </fieldset>
                 <!-- submit button -->
                 <div class="submit-button text-right mt-5 mb-2">
