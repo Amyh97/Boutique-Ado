@@ -80,7 +80,7 @@
                                     <a href="" class="dropdown-item">Product Management</a>
                                 {% endif %}
                                 <!-- if a regulat user is authenticated have these options-->
-                                <a href="" class="dropdown-item">My Profile</a>
+                                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                             {% else %} <!-- login/out and singup are coming from Allauth urls -->
                                 <!-- if they are not already authenticated give option to sign up or login -->

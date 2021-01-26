@@ -3,9 +3,11 @@
 {% load i18n %}
 
 {% block head_title %}{% trans "Account Inactive" %}{% endblock %}
-
-{% block content %}
-<h1>{% trans "Account Inactive" %}</h1>
+{% block inner_content %}
+<!-- add horizontal rules and change from h1 to h2 and add classes-->
+<hr>
+<h2 class="logo-font mb-4">{% trans "Account Inactive" %}</h2>
+<hr>
 
 <p>{% trans "This account is inactive." %}</p>
 {% endblock %}
