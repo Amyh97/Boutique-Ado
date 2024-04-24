@@ -1,3 +1,4 @@
+# This project was a walkthrough from Code Institue for learning purposes 
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome Amyh97,
